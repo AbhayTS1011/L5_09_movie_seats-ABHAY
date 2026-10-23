@@ -14,7 +14,9 @@ def reserve_seat(show_id, seat_number, system_logs=None):
     if system_logs is None:
         system_logs = []
     show = SHOWS.get(show_id)
-    if show is None or not isinstance(seat_number, int):
+    if show is None or not isinstance(
+        seat_number, int
+    ):
         return False
     if seat_number < 1 or seat_number > show["seats"]:
         return False
@@ -75,7 +77,9 @@ def main():
     reserve_seat("SHOW-1", 25)
     reserve_seat("SHOW-2", -1)
     print("Ticket code:", ticket_code("SHOW-1", 5))
-    seat_input = input("Seat number to book for SHOW-2 (Enter for 4): ") or "4"
+    seat_input = (
+        input("Seat number to book for SHOW-2 (Enter for 4): ") or "4"
+    )
     try:
         seat_number = int(seat_input)
     except ValueError:
